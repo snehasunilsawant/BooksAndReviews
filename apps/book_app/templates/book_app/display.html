@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	{% load staticfiles %}
+    <title>Book Detaisl</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}">
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+    <div class="container">
+        <div class="row">
+        <h3 style = "font-weight: bold">{{title}}</h3>
+        <h4>Author : {{author}}</h4>
+        </div>
+        <div class="row">
+        <form method="POST" action="/books/{{id}}/onlyreview/">
+            {% csrf_token %}
+            <p>Add a review : </p>
+            <textarea name="review"></textarea>
+            
+            <p>Rating:</P>
+            <select name="rating">
+                <option value="1">*</option>
+                <option value="2">**</option> 
+                <option value="3">***</option> 
+                <option value="4">****</option> 
+                <option value="5">*****</option> 
+              </select>
+
+              <input class="waves-effect waves-light btn" type="submit" value="Submit Reviews">
+        </form> 
+
+        </div>
+
+        <div class="row">
+            <h4>Reviews</h4>
+            
+        </div>
+        <!-- {%for i in users %}
+            {% for j in review %}
+                <p>-------------------------------------------------------------------------------------------------------</p>
+                <p>Rating : {{rating}}         
+
+                <p><a href="/user/{{i.id}}">{{i.name}}</a> : {{j.review}}</p>
+            {% endfor %}
+        {% endfor %}
+
+        {%for i in users %}
+        {{i.name}}
+        {% endfor %} -->
+
+    </div>
+</body>
+</html>
+
+
+    

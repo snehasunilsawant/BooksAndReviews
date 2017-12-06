@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load staticfiles %}
+    <title>Books and Reviews</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}">
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+    
+    <div class="row" >
+        <h3>Welcome !</h3>
+        <div class="col s1"></div>
+        <div class="col s4">
+            <h4>Registration</h4>
+            <form method="POST" action="/register/">
+                {% csrf_token %}
+                Name:
+                <input type="text" name="name" placeholder="Enter name here" required=true>
+                
+                Alias:
+                <input type="text" name="alias" placeholder="Enter alias    here" required=true>    
+
+                Email:
+                <input type="text" name="email" placeholder="Enter email here" required=true>
+
+                Password:
+                <input type="text"  name="password" placeholder="Enter password here" required=true>  
+                <p style = "font-size : 13px;">*Password should be at least 8 characters</p>   
+
+                Confirm Password: 
+                <input type="text" name="c_password" placeholder="Confirm password here" required=true>  
+
+                <input class="waves-effect waves-light btn" type="submit" value="Register" required=true>
+            </form>
+        </div>
+    
+        <div class="col s2"></div>
+
+        <div  class="col s4">
+            <h4>Login</h4>
+            <form method="post" action="/login/">
+                {% csrf_token %}
+                Email:
+                <input type="text" name="email" placeholder="Enter email here" required=true>
+       
+                Password:
+                <input type="text" name="password" placeholder="Enter password here" required=true>
+           
+                <input class="waves-effect waves-light btn" type="submit" value="Login">
+
+        </div>
+        </form>
+</body>
+
+</html>

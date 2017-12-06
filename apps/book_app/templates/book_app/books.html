@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load staticfiles %}
+    <title>Books</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}">
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+    <div class = "row">
+    <h2 class="col s7" >Welcome, {{request.session.name}}</h2>
+    <a class="col s1" href="/logout/" > Logout </a>
+    <a class="col s2"href="/books/add/" > Add Book and Review </a>
+
+    </div>
+    <div class = "row">
+        <p style="color:green">Sucessfully registered (or logged in )</p>
+    </div>
+
+    <div class = "row">
+            <h4>Recent Book Rewies : </h4>
+            {%for i in reviews %}
+            <p>-------------------------------------------------------------------------------------------------------</p>
+            <p>Rating : {{i.reviews_of.rating}}  </p> 
+            <p><p><a href="/books/{{i.reviews_of.id}}">{{i.reviews_of.title}}</a> : {{i.review}} </p>
+            {%endfor%}
+
+
+    </div>
+
+    <div class = "row">
+        <h4>Other Books with reviews : </h4>
+        {% for i in otherBooks %}
+            <p><a href="/books/{{i.id}}">{{i.title}}</a></p> 
+        {% endfor %}
+    </div>
+
+
+    
+</body>
+
+</html>

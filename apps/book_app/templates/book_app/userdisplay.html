@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	{% load staticfiles %}
+    <title>My Account</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}">
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+    <div class="container">
+        <div class="row">
+        <h3 style = "font-weight: bold">User Alias : {{alias}}</h3>
+        <p>Name : {{name}}</p>
+        <p>Email : {{email}}</p>
+        <p>Total Reviews : {{reviewscount}}</p>
+        </div>
+        <div class="row">
+        <h4>Posted reviews on the following books : </h4>
+            {%for i in books %}        
+            <p><a href="/books/{{i.id}}">{{i.title}}</a></p>    
+            {% endfor %}
+
+    </div>
+</body>
+</html>
+
+
+    
