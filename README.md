@@ -13,6 +13,7 @@ Database : MySQL and ORM
 Languages : python
 CSS Framework : materialiseCSS
 ```
+*It's a small project focusing on Django, database design and accessing session within website. Implemented within 2-3 hours.*
 
 ## Features : 
 
